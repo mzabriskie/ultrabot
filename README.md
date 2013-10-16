@@ -5,7 +5,7 @@ turntable.fm bot
 
 ## Overview
 
-This is my turntable.fm bot 'ultrabot the funk'. He DJs when I don't have anyone else in my room to spin with, he likes everything I play, and he thinks deep thoughts.
+This is my turntable.fm bot [ultrabot the funk](http://turntable.fm/profile/521971e3eb35c16bd3ef9060). He DJs when I don't have anyone else in my room to spin with, he likes everything I play, and he spouts deep thoughts.
 
 You're welcome to use this script or modify it to create your own bot.
 
@@ -44,11 +44,15 @@ module.exports = [
 ];
 ```
 
-Now you can run the ultrabot script:
+## Running
+
+Start ultrabot server:
 
 ```bash
 npm start
 ```
+
+Launch [turntable.fm](http://turntable.fm) from your browser and visit the room that you specified in your `bots.js` configuration.
 
 ## License
 
