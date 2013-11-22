@@ -140,15 +140,15 @@ function handleAddDj(bot, data) {
 // Handle 'rem_dj' event
 function handleRemDj(bot, data) {
     // Checks DJ count when a DJ steps down
-    bot.roomInfo(false, function (data) {
-        // If there aren't enough DJ's, add one
-        if (data.room.metadata.djcount <= DJ_COUNT) {
+    bot.roomInfo(false, function (info) {
+        // If there aren't enough DJ's, add one (unless bot is the one stepping down)
+        if (info.room.metadata.djcount <= DJ_COUNT && data.user[0].userid !== MOD_BOT.userId) {
             // Add DJ from the queue
             if (DJ_QUEUE.length > 0) {
                 bot.addDj(DJ_QUEUE.shift());
             }
             // ...otherwise bot takes a turn on the decks!
-            else if (data.room.metadata.djcount > 1) {
+            else if (info.room.metadata.djcount > 1) {
                 bot.addDj();
             }
             // ...unless bot is the only DJ
