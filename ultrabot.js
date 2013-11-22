@@ -83,7 +83,7 @@ function handleSnagged(bot, data) {
 function handleRoomChanged(bot, data) {
     // If there aren't enough DJ's, get on decks
     if (data.room.metadata.djcount > 0 &&
-        data.room.metadata.djcount <= DJ_COUNT) {
+        data.room.metadata.djcount < DJ_COUNT) {
         bot.addDj();
     }
 }
