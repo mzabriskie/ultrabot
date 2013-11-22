@@ -105,8 +105,10 @@ function handleEndSong(bot, data) {
     if (!isCurrentDJ && data.room.metadata.upvotes >= 10) {
         bot.playlistAdd(data.room.metadata.current_song._id);
     }
-    // Drop song if it sucked
-    else if (isCurrentDJ && data.room.metadata.downvotes > 2) {
+    // Drop song if it sucked (at least 3 down votes and 30% of listeners down voted)
+    else if (isCurrentDJ && data.room.metadata.downvotes >= 3 &&
+			data.room.metadata.listeners > 0 &&
+			(data.room.metadata.downvotes / data.room.metadata.listeners) >= .3) {
         bot.playlistRemove();
     }
 
